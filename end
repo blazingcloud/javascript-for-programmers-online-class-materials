@@ -1,0 +1,2 @@
+#!/bin/bash
+ps jx |grep showoff |grep -v grep | awk '{print $2}' | xargs kill 

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Presentation</title>
+
+  <% if @no_js %>
+    <%= inline_css(['pdf.css'], 'public/css') %>
+  <% else %>
+    <%= inline_css(['onepage.css'], 'public/css') %>
+  <% end %>
+  <%= inline_css(['reset.css', 'showoff.css', 'theme/ui.all.css', 'sh_style.css'], 'public/css') %>
+  <%= inline_css(css_files) %>
+
+  <% if !@no_js %>
+    <%= inline_js(['jquery-1.4.2.min.js', 'jquery-print.js', 'showoff.js', 'onepage.js', 'sh_main.min.js', 'core.js', 'showoffcore.js'], 'public/js') %>
+    <%= inline_all_js('public/js/sh_lang') %>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      setupOnePage()
+    });
+    </script>
+  <% end %>
+</head>
+
+<body>
+
+<div id="slides">
+  <%= @slides %>
+</div>
+
+</body>
+</html>

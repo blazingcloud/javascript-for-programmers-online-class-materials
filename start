@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+Dir["#{ARGV.shift}/class*"].each do |dir|
+  port = %%999#{dir[-1..-1]}%
+  fork {
+    pid = fork {
+      p "#{port} launch"
+      p exec %%cd #{dir} && ../../showoff-0.4.2/bin/showoff serve -p #{port}%
+    }
+
+    Process.detach(pid)
+  }
+end
