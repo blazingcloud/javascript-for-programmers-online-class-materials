@@ -1,7 +1,7 @@
 !SLIDE 
 # JavaScript For Programmers #
 # .x Introduction - Part 5 x. #
-# .(  Jasmin  ). #
+# .(  Jasmine  ). #
 
 !SLIDE bullets 
 # Test First Learning with Jasmine #
@@ -99,6 +99,9 @@
     @@@ javaScript
     describe('Calculator', function () {
       var counter = 0
+      beforeEach(function () {
+        counter = 0; // ensure counter is zero
+      });
 
       it('can add a number', function () {
         counter = counter + 2;   // counter was 0 before
@@ -106,7 +109,8 @@
       });
 
       it('can multiply a number', function () {
-        counter = counter * 5;   // counter was 2 before
+        counter = 2; // counter was 0
+        counter = counter * 5; 
         expect(counter).toEqual(10);
       });
     });
